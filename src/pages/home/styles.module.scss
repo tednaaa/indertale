@@ -1,0 +1,59 @@
+.backgroundImage {
+  background: url('./assets/main-bg.jpg') center / cover no-repeat;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: calc(100vh - 100px);
+}
+
+.title {
+  font-size: 72px;
+  max-width: 285px;
+  line-height: normal;
+  margin-bottom: 50px;
+
+  @media (max-width: 576px) {
+    font-size: 50px;
+  }
+}
+
+.buttons {
+  display: inline-flex;
+  gap: 20px;
+
+  @media (max-width: 576px) {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+.telegramLink {
+  font-size: 20px;
+  line-height: normal;
+  padding: 15px 30px;
+  border-radius: 15px;
+  background-color: #fff;
+  color: var(--color-blue);
+  transition: 0.2s;
+  position: relative;
+  padding-right: 65px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 35px;
+    width: 35px;
+    background: url('@/shared/assets/icons/telegram.svg') 0 0 / cover no-repeat;
+  }
+
+  &:hover {
+    background-color: var(--color-blue);
+    color: #fff;
+  }
+}

@@ -1,0 +1,55 @@
+.button {
+  &:hover {
+    .bottomLine {
+      stroke-dashoffset: 0%;
+    }
+  }
+}
+
+.buttonActive {
+  .topLine {
+    transform: rotate(45deg);
+    stroke-linecap: round;
+  }
+
+  .middleLine {
+    transform: scaleX(0.1);
+    opacity: 0;
+  }
+
+  .bottomLine {
+    transform: rotate(-45deg);
+    stroke-linecap: round;
+    stroke-dashoffset: 0%;
+  }
+}
+
+.buttonSvg {
+  width: 30px;
+  height: 30px;
+  transform: scaleX(-1);
+}
+
+.line {
+  stroke: #fff;
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 0%;
+  transition: transform 0.3s, stroke-dashoffset 0.4s;
+  transform-origin: center;
+  stroke-width: 3px;
+}
+
+.topLine {
+  transform: translateY(-35%);
+}
+
+.middleLine {
+  transform: scaleX(1);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.bottomLine {
+  transform: translateY(33%);
+  stroke-dasharray: 100%;
+  stroke-dashoffset: 9px;
+}
