@@ -10,8 +10,8 @@
 }
 
 .logo {
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
 }
 
 .logoImage {
@@ -58,13 +58,12 @@
   font-weight: 500;
   color: #fff;
   position: relative;
-  padding-bottom: 15px;
 
   &::after {
     content: '';
     position: absolute;
     left: 0;
-    bottom: 0;
+    bottom: -15px;
     height: 2px;
     width: 0;
     background-color: var(--color-green);

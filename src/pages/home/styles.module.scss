@@ -1,15 +1,12 @@
-.backgroundImage {
+.aboutMe {
   background: url('./assets/main-bg.jpg') center / cover no-repeat;
-}
-
-.container {
+  height: calc(100vh - 80px);
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  height: calc(100vh - 100px);
+  flex-direction: column;
 }
 
-.title {
+.aboutMeTitle {
   font-size: 72px;
   max-width: 285px;
   line-height: normal;
@@ -30,8 +27,23 @@
   }
 }
 
+.cvButton {
+  font-size: 18px;
+  line-height: normal;
+  padding: 15px 30px;
+  border-radius: 15px;
+  color: #fff;
+  background-color: var(--color-blue);
+  transition: 0.2s;
+
+  &:hover {
+    background-color: var(--color-blue);
+    color: #fff;
+  }
+}
+
 .telegramLink {
-  font-size: 20px;
+  font-size: 18px;
   line-height: normal;
   padding: 15px 30px;
   border-radius: 15px;
@@ -56,4 +68,107 @@
     background-color: var(--color-blue);
     color: #fff;
   }
+}
+
+.projects {
+  height: auto;
+  padding: 50px 0;
+}
+
+.projectsTitle {
+  font-size: 32px;
+  line-height: 36px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.projectsList {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+.projectCard {
+  display: block;
+  width: 200px;
+  border: 2px solid var(--color-dark-grey);
+  border-radius: 6px;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: calc(100% - 57px);
+    width: 100%;
+    background: var(--color-dark-grey);
+    transition: ease-in-out 0.3s;
+
+    opacity: 0;
+  }
+
+  &:hover {
+    &::before {
+      opacity: 0.9;
+    }
+
+    .projectCardStackList {
+      opacity: 1;
+    }
+  }
+}
+
+.projectCardInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-top: 2px solid var(--color-dark-grey);
+}
+
+.projectCardTitle {
+  font-size: 18px;
+  line-height: 21px;
+  font-weight: 500;
+}
+
+.projectCardImage {
+  display: block;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 4px;
+  transition: ease-in-out 0.3s;
+}
+
+.githubIcon {
+  height: 35px;
+  width: 35px;
+}
+
+.projectCardStackList {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  top: 20px;
+  left: 0;
+  gap: 15px;
+  transition: ease-in-out 0.3s;
+
+  opacity: 0;
+}
+
+.projectCardStackListItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+}
+
+.projectCardStackListImage {
+  max-height: 100%;
 }

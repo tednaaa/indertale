@@ -45,9 +45,7 @@ module.exports = (env, argv) => {
         favicon: path.join(__dirname, 'public', 'favicon.ico'),
       }),
       new MiniCssExtractPlugin({
-        filename: isDevelopment
-          ? 'css/[name].css'
-          : 'css/[name].[contenthash].css',
+        filename: isDevelopment ? 'css/[name].css' : 'css/[name].[contenthash].css',
       }),
       new Dotenv({ systemvars: true }),
     ],
@@ -60,12 +58,7 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.(css|scss)$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            'css-loader',
-            'postcss-loader',
-            'sass-loader',
-          ],
+          use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
         },
         {
           test: /\.(svg|bmp|gif|jpg|jpeg|png|avif|webp)$/,
@@ -79,6 +72,13 @@ module.exports = (env, argv) => {
           type: 'asset/resource',
           generator: {
             filename: 'assets/fonts/[hash][ext]',
+          },
+        },
+        {
+          test: /\.(pdf)$/,
+          loader: 'file-loader',
+          options: {
+            name: 'assets/files/[name].[ext]',
           },
         },
       ],
