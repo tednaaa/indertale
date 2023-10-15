@@ -1,7 +1,8 @@
 import { FC, ReactNode } from 'react';
 
-import styles from './styles.module.scss';
 import { Header } from './header';
+
+import styles from './styles.module.scss';
 
 interface Props {
   children: ReactNode;

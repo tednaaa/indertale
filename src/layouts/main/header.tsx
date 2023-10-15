@@ -1,10 +1,12 @@
+import { useState } from 'react';
+import { clsx } from 'clsx';
+
+import { Container } from '@/shared/ui/container';
+import { BurgerButton } from '@/shared/ui/burger-button';
+
 import styles from './styles.module.scss';
 
 import logoImage from './assets/logo.jpg';
-import { Container } from '@/shared/ui/container';
-import { BurgerButton } from '@/shared/ui/burger-button';
-import { useState } from 'react';
-import { clsx } from 'clsx';
 
 export const Header = () => {
   const [isBurgerActive, setBurgerActive] = useState<boolean>(false);

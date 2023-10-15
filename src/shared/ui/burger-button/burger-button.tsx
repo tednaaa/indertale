@@ -10,10 +10,7 @@ interface Props {
 
 export const BurgerButton: FC<Props> = ({ className, isOpen, onOpen }) => {
   return (
-    <button
-      className={clsx(styles.button, isOpen && styles.buttonActive, className)}
-      onClick={onOpen}
-    >
+    <button className={clsx(styles.button, isOpen && styles.buttonActive, className)} onClick={onOpen}>
       <svg className={styles.buttonSvg}>
         <line
           x1="0"

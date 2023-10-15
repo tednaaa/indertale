@@ -9,9 +9,7 @@ const TEXT_FALLBACK = 'Something went wrong.';
 const FallbackComponent = () => <div>{TEXT_FALLBACK}</div>;
 
 const renderWithErrorBoundary = (children: ReactNode) => {
-  return render(
-    <ErrorBoundary fallback={FallbackComponent()}>{children}</ErrorBoundary>
-  );
+  return render(<ErrorBoundary fallback={FallbackComponent()}>{children}</ErrorBoundary>);
 };
 
 const ThrowErrorComponent = () => {

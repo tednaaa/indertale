@@ -16,17 +16,10 @@ export const NotFoundPage = () => {
               OOOps! <br />
               Page Not Found
             </h1>
-            <p className={styles.text}>
-              Sorry about that! Please visit our homepage to get where you need
-              to go.
-            </p>
+            <p className={styles.text}>Sorry about that! Please visit our homepage to get where you need to go.</p>
             <Link to={routes.HOME}>Back to homepage</Link>
           </div>
-          <img
-            className={styles.image}
-            src={astronautsImage}
-            alt="404 not found"
-          />
+          <img className={styles.image} src={astronautsImage} alt="404 not found" />
         </div>
       </Container>
     </div>
