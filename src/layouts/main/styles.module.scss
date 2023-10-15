@@ -45,7 +45,7 @@
 
 .navList {
   display: flex;
-  gap: 30px;
+  gap: 50px;
 
   @media (max-width: 576px) {
     flex-direction: column;
@@ -54,7 +54,7 @@
 
 .navItem {
   font-size: 24px;
-  font-weight: normal;
+  line-height: normal;
   font-weight: 500;
   color: #fff;
   position: relative;
@@ -63,7 +63,7 @@
     content: '';
     position: absolute;
     left: 0;
-    bottom: -15px;
+    bottom: -10px;
     height: 2px;
     width: 0;
     background-color: var(--color-green);
