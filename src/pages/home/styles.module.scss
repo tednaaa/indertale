@@ -72,6 +72,7 @@
 }
 
 .projects {
+  background: linear-gradient(135deg, #615b5b 75%, #393131 25%);
   height: auto;
   padding: 50px 0;
 }
@@ -79,56 +80,71 @@
 .projectsTitle {
   font-size: 32px;
   line-height: 36px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   text-align: center;
+  color: #fff;
 }
 
-.projectsList {
+.projectsSliderNavigation {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 0 auto;
+  justify-content: flex-end;
   gap: 20px;
+  margin-bottom: 20px;
+
+  @media (max-width: 576px) {
+    justify-content: center;
+  }
+}
+
+.projectsSliderPreviousArrow,
+.projectsSliderNextArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background: orange;
+}
+
+.projectsSliderDisabledArrow {
+  opacity: 0.5;
+}
+
+.projectsSliderPreviousArrowImage,
+.projectsSliderNextArrowImage {
+  height: 25px;
+  width: 25px;
+}
+
+.projectsSliderPreviousArrowImage {
+  transform: rotate(180deg);
 }
 
 .projectCard {
-  display: block;
-  width: 200px;
-  border: 2px solid var(--color-dark-grey);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+  @media (max-width: 576px) {
+    max-width: 350px;
+    margin: 0 auto;
+  }
+}
+
+.projectCardContainer {
+  width: 100%;
   border-radius: 6px;
-  position: relative;
-
-  &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: calc(100% - 68px);
-    width: 100%;
-    background: var(--color-dark-grey);
-    transition: ease-in-out 0.3s;
-
-    opacity: 0;
-  }
-
-  &:hover {
-    &::before {
-      opacity: 0.9;
-    }
-
-    .projectCardStackList {
-      opacity: 1;
-    }
-  }
 }
 
 .projectCardInfo {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 68px;
-  padding: 10px;
-  border-top: 2px solid var(--color-dark-grey);
+  padding: 5px 10px;
+  background: #fff;
+  border-radius: 15px;
+  margin-top: 10px;
 }
 
 .projectCardTitle {
@@ -142,7 +158,7 @@
   display: block;
   height: 250px;
   object-fit: cover;
-  border-radius: 4px;
+  border-radius: 15px;
   transition: ease-in-out 0.3s;
 }
 
@@ -152,24 +168,19 @@
 }
 
 .projectCardStackList {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  top: 20px;
-  left: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 50px);
+  max-width: 100%;
+  margin: 0;
+  margin-top: 20px;
   gap: 15px;
-  transition: ease-in-out 0.3s;
-
-  opacity: 0;
 }
 
 .projectCardStackListItem {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
-  width: 40px;
+  height: 50px;
 }
 
 .projectCardStackListImage {

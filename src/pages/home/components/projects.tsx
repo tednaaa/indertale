@@ -1,58 +1,54 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Keyboard, Navigation } from 'swiper/modules';
+
+import 'swiper/css';
+import 'swiper/css/navigation';
+
 import { FullscreenSection } from '@/shared/ui/fullscreen-section';
 
-import { ProjectCard, TechStack } from './project-card';
+import { projects } from '../lib/projects';
+import { ProjectCard } from './project-card';
 
 import styles from '../styles.module.scss';
-
-import backendSource from '../assets/backend.jpeg';
-import fsrtSource from '../assets/fsrt.png';
-import aiAssistantSource from '../assets/ai-assistant.jpg';
-import urlShortenerSource from '../assets/url-shortener.png';
-
-export interface Project {
-  name: string;
-  sourceLink: string;
-  imageLink: string;
-  stack: TechStack[];
-}
-
-const projects: Project[] = [
-  {
-    name: 'fsrt',
-    sourceLink: 'https://github.com/tednaaa/fsrt',
-    imageLink: fsrtSource,
-    stack: ['typescript', 'react', 'webpack', 'postcss', 'scss', 'jest', 'reactTestingLibrary', 'docker', 'fsd'],
-  },
-  {
-    name: 'AI Assistant',
-    sourceLink: 'https://github.com/tednaaa/ai-assistant',
-    imageLink: aiAssistantSource,
-    stack: ['typescript', 'react', 'electron', 'effector', 'vite', 'scss', 'openai', 'fsd'],
-  },
-  {
-    name: 'Url Shortener',
-    sourceLink: 'https://github.com/tednaaa/url-shortener',
-    imageLink: urlShortenerSource,
-    stack: ['typescript', 'golang', 'sqlite', 'vue', 'vite', 'scss', 'fsd'],
-  },
-  {
-    name: 'Boiler Store API',
-    sourceLink: 'https://github.com/tednaaa/boiler-shop-api',
-    imageLink: backendSource,
-    stack: ['typescript', 'node', 'nest', 'postgresql', 'sequelize', 'jest'],
-  },
-];
+import { ProjectsSliderNavigation } from './projects-slider-navigation';
+import { useState } from 'react';
+import { Swiper as SwiperType } from 'swiper';
 
 export const Projects = () => {
-  return (
-    <FullscreenSection className={styles.projects}>
-      <h2 className={styles.projectsTitle}>Projects</h2>
+  const [swiper, setSwiper] = useState<SwiperType | null>(null);
 
-      <ul className={styles.projectsList}>
+  return (
+    <FullscreenSection className={styles.projects} id="projects">
+      <h2 className={styles.projectsTitle}>Projects</h2>
+      <ProjectsSliderNavigation swiper={swiper} />
+
+      <Swiper
+        modules={[Keyboard, Navigation]}
+        onInit={setSwiper}
+        navigation={{
+          prevEl: `.${styles.projectsSliderPreviousArrow}`,
+          nextEl: `.${styles.projectsSliderNextArrow}`,
+          disabledClass: `.${styles.projectsSliderDisabledArrow}`,
+        }}
+        keyboard={true}
+        spaceBetween={20}
+        slidesPerView={1}
+        breakpoints={{
+          576: {
+            slidesPerView: 2,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+        }}
+      >
         {projects.map(({ name, sourceLink, imageLink, stack }) => (
-          <ProjectCard key={sourceLink} name={name} sourceLink={sourceLink} imageLink={imageLink} stack={stack} />
+          <SwiperSlide key={sourceLink}>
+            <ProjectCard name={name} sourceLink={sourceLink} imageLink={imageLink} stack={stack} />
+          </SwiperSlide>
         ))}
-      </ul>
+      </Swiper>
     </FullscreenSection>
   );
 };
