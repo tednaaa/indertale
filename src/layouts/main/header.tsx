@@ -27,18 +27,18 @@ export const Header = () => {
           <nav className={clsx(styles.nav, isBurgerActive && styles.navActive)}>
             <ul className={styles.navList}>
               <li className={styles.navItem}>
-                <a className={styles.navItemLink} href="#">
+                <a className={styles.navItemLink} href="#aboutMe">
                   About Me
                 </a>
               </li>
               <li className={styles.navItem}>
-                <a className={styles.navItemLink} href="#">
+                <a className={styles.navItemLink} href="#projects">
                   Projects
                 </a>
               </li>
               <li className={styles.navItem}>
-                <a className={styles.navItemLink} href="#">
-                  Contact
+                <a className={styles.navItemLink} href="#contacts">
+                  Contacts
                 </a>
               </li>
             </ul>
