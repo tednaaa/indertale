@@ -8,7 +8,7 @@ import cvPdfSource from '../assets/cv.pdf';
 
 export const AboutMe = () => {
   return (
-    <FullscreenSection className={styles.aboutMe}>
+    <FullscreenSection className={styles.aboutMe} id="aboutMe">
       <h2 className={styles.aboutMeTitle}>
         Hi! <br />I am Andranik
       </h2>

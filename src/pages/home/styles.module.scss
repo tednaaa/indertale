@@ -186,3 +186,76 @@
 .projectCardStackListImage {
   max-height: 100%;
 }
+
+.contacts {
+  background: linear-gradient(45deg, #615b5b 75%, #393131 25%);
+  height: auto;
+  padding: 50px 0;
+}
+
+.contactsTitle {
+  font-size: 32px;
+  line-height: 36px;
+  margin-bottom: 50px;
+  text-align: center;
+  color: #fff;
+}
+
+.contactsList {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(5, 1fr);
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 576px) {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+}
+
+.contactItem {
+  border: solid 2px var(--color-blue);
+  background: #fff;
+  border-radius: 8px;
+  font-size: 24px;
+  line-height: 27px;
+  transition: 0.2s ease-in;
+
+  &:hover {
+    background: var(--color-blue);
+    color: #fff;
+  }
+
+  @media (max-width: 576px) {
+    max-width: 350px;
+    width: 100%;
+  }
+}
+
+.contactItemLink {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.contactItemLabel {
+  margin-right: 10px;
+}
+
+.contactItemImage {
+  height: 40px;
+  width: 40px;
+  margin-left: auto;
+}
