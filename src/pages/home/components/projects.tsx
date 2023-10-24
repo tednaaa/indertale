@@ -1,35 +1,40 @@
+import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Keyboard, Navigation } from 'swiper/modules';
-
-import 'swiper/css';
-import 'swiper/css/navigation';
+import { NavigationOptions, Swiper as SwiperType } from 'swiper/types';
 
 import { FullscreenSection } from '@/shared/ui/fullscreen-section';
 
 import { projects } from '../lib/projects';
 import { ProjectCard } from './project-card';
-
-import styles from '../styles.module.scss';
 import { ProjectsSliderNavigation } from './projects-slider-navigation';
-import { useState } from 'react';
-import { Swiper as SwiperType } from 'swiper';
+
+import 'swiper/css';
+import styles from '../styles.module.scss';
 
 export const Projects = () => {
-  const [swiper, setSwiper] = useState<SwiperType | null>(null);
+  const navigationPrevRef = useRef<HTMLButtonElement>(null);
+  const navigationNextRef = useRef<HTMLButtonElement>(null);
+
+  const handleSliderBeforeInit = (swiper: SwiperType) => {
+    const navigation = swiper.params.navigation as NavigationOptions;
+
+    navigation.prevEl = navigationPrevRef.current;
+    navigation.nextEl = navigationNextRef.current;
+  };
 
   return (
     <FullscreenSection className={styles.projects} id="projects">
       <h2 className={styles.projectsTitle}>Projects</h2>
-      <ProjectsSliderNavigation swiper={swiper} />
+      <ProjectsSliderNavigation sliderPreviousButtonRef={navigationPrevRef} sliderNextButtonRef={navigationNextRef} />
 
       <Swiper
         modules={[Keyboard, Navigation]}
-        onInit={setSwiper}
         navigation={{
-          prevEl: `.${styles.projectsSliderPreviousArrow}`,
-          nextEl: `.${styles.projectsSliderNextArrow}`,
-          disabledClass: `.${styles.projectsSliderDisabledArrow}`,
+          prevEl: navigationPrevRef.current,
+          nextEl: navigationNextRef.current,
         }}
+        onBeforeInit={handleSliderBeforeInit}
         keyboard={true}
         spaceBetween={20}
         slidesPerView={1}

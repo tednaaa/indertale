@@ -1,23 +1,21 @@
-import { FC } from 'react';
-import { Swiper as SwiperType } from 'swiper';
-
-import styles from '../styles.module.scss';
+import { FC, Ref } from 'react';
 
 import arrowSvg from '@/shared/assets/icons/arrow.svg';
 
+import styles from '../styles.module.scss';
+
 interface Props {
-  swiper: SwiperType | null;
+  sliderPreviousButtonRef: Ref<HTMLButtonElement>;
+  sliderNextButtonRef: Ref<HTMLButtonElement>;
 }
 
-export const ProjectsSliderNavigation: FC<Props> = ({ swiper }) => {
-  if (!swiper) return;
-
+export const ProjectsSliderNavigation: FC<Props> = ({ sliderPreviousButtonRef, sliderNextButtonRef }) => {
   return (
     <div className={styles.projectsSliderNavigation}>
-      <button className={styles.projectsSliderPreviousArrow} onClick={() => swiper.slidePrev()}>
+      <button ref={sliderPreviousButtonRef} className={styles.projectsSliderPreviousArrow}>
         <img className={styles.projectsSliderPreviousArrowImage} src={arrowSvg} alt="" />
       </button>
-      <button className={styles.projectsSliderNextArrow} onClick={() => swiper.slideNext()}>
+      <button ref={sliderNextButtonRef} className={styles.projectsSliderNextArrow}>
         <img className={styles.projectsSliderNextArrowImage} src={arrowSvg} alt="" />
       </button>
     </div>
