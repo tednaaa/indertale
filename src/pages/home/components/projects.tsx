@@ -17,10 +17,16 @@ export const Projects = () => {
   const navigationNextRef = useRef<HTMLButtonElement>(null);
 
   const handleSliderBeforeInit = (swiper: SwiperType) => {
+    if (!swiper.params) return;
+
     const navigation = swiper.params.navigation as NavigationOptions;
 
     navigation.prevEl = navigationPrevRef.current;
     navigation.nextEl = navigationNextRef.current;
+
+    swiper.navigation.destroy();
+    swiper.navigation.init();
+    swiper.navigation.update();
   };
 
   return (
